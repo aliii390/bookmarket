@@ -8,6 +8,9 @@ module.exports = {
     extend: { 
       fontFamily: {
         principale : ["Lexend", "sans-serif"]
+      },
+      backgroundImage: {
+        'imageun' : "url('../../assets/img/accueil.jpg')",
       }
     },
   },
