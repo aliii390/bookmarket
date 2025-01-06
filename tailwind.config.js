@@ -5,7 +5,7 @@ module.exports = {
     "./front/**/*.php"
   ],
   theme: {
-    extend: {},
+    extend: { },
   },
   plugins: [],
 }
