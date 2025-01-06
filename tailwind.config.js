@@ -5,7 +5,11 @@ module.exports = {
     "./front/**/*.php"
   ],
   theme: {
-    extend: { },
+    extend: { 
+      fontFamily: {
+        principale : ["Lexend", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
