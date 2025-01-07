@@ -59,17 +59,14 @@ session_start();
 
   <!-- Bouton Connectez-vous -->
   <div class="hidden md:flex md:ml-6">
-    <a href="./front/login/login.php" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
+    <a href="../profil/profil.php" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
     <?php echo isset($_SESSION['pseudo']['prenom']) ? $_SESSION['pseudo']['prenom'] : 'sa marche ap'; ?>
     </a>
   </div>
 
   <!--  panier -->
   <div class="hidden md:flex md:ml-4">
-    <a href="">
-    <i class="fa-solid fa-gear" style="color: #000000;"></i>
-
-    </a>
+    
     <a href="#">
       <i class="fa-solid fa-cart-shopping text-black text-lg hover:text-[#F5702B] transition"></i>
     </a>
@@ -124,7 +121,7 @@ session_start();
       </a>
     </li>
     <li class="flex justify-center">
-      <a href="./front/login/login.php" 
+      <a href="../profil/profil.php" 
          class="flex justify-center items-center h-10 w-40 px-3 py-2 text-sm 
                 text-white bg-[#2A3D37] hover:bg-[#109133] hover:text-white 
                 transition rounded-lg">

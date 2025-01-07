@@ -111,7 +111,7 @@ try {
     }
 } catch (PDOException $e) {
     $_SESSION["error"] = "Erreur : " . $e->getMessage();
-    header("Location: ../index.php");
-    exit;
+    // header("Location: ../index.php");
+    // exit;
 }
 
