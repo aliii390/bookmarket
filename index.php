@@ -1,3 +1,20 @@
+<?php  
+
+require_once './connect/connectDB.php';
+session_start();
+
+
+
+
+?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +31,7 @@
 
 <body>
 
-<header class="bg-[#FDEDD5] flex items-center p-3 justify-between gap-4 sm:justify-between sm:px-6 xl:justify-around ">
+<header class="bg-[#FDEDD5]  flex items-center p-3 justify-between gap-4 sm:justify-between sm:px-6 xl:justify-around ">
   <!-- Logo -->
   <img src="./assets/img/logo.png" alt="Logo" class="w-32">
 
@@ -41,7 +58,7 @@
 
   <!-- Bouton Connectez-vous -->
   <div class="hidden md:flex md:ml-6">
-    <a href="#" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
+    <a href="./front/login/login.php" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
       Connectez-vous
     </a>
   </div>
@@ -102,7 +119,7 @@
       </a>
     </li>
     <li class="flex justify-center">
-      <a href="#" 
+      <a href="./front/login/login.php" 
          class="flex justify-center items-center h-10 w-40 px-3 py-2 text-sm 
                 text-white bg-[#2A3D37] hover:bg-[#109133] hover:text-white 
                 transition rounded-lg">
