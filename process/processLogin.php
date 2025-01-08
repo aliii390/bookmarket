@@ -45,7 +45,8 @@ try {
                 'prenom' => $user['prenom'],
                 'nom' => $user['nom'],
                 'email' => $user['email'],
-                'telephone' => $user['telephone']
+                'telephone' => $user['telephone'],
+                'role' => $user["role"]
             ];
             header("Location: ../front/accueil/accueil.php");
             exit;
@@ -74,13 +75,20 @@ try {
                     ':adresse_entreprise' => $companyAddress
                 ]);
 
-                $idUserPro = $pdo->lastInsertId(); 
+                $idUserPro = $pdo->lastInsertId();
+                $_SESSION['id_user_pro'] = $idUserPro ;
             } else {
                 $_SESSION["error"] = "Les informations de l'entreprise sont obligatoires pour le rôle Vendeur.";
                 header("Location: ../index.php");
                 exit;
             }
+            $_SESSION['utilisateur'] += [
+                'companyName' => $companyName,
+                'companyAddress' => $companyAddress,
+            ];
         }
+
+
 
   
         $sqlUser = "INSERT INTO user (prenom, nom, email, telephone, mdp, role, id_user_pro) 
@@ -103,7 +111,8 @@ try {
             'prenom' => $username,
             'nom' => $lastname,
             'email' => $email,
-            'telephone' => $phone
+            'telephone' => $phone,
+            'role' => $role
         ];
        
         header("Location: ../front/accueil/accueil.php");

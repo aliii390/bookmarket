@@ -126,7 +126,7 @@ session_start();
 <!-- Section Profil -->
 <main class="max-w-5xl mx-auto mt-10 p-6 sm:p-8 bg-white shadow-lg rounded-lg">
     <div class="text-center mb-6 lg:mb-7">
-        <h1 class="text-xl font-bold text-black">Bienvenue sur votre profil</h1>
+        <h1 class="text-xl font-principale text-black">Bienvenue <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?></h1>
         <p class="text-gray-600">Gérez vos informations personnelles et vos préférences.</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
@@ -135,22 +135,36 @@ session_start();
             <div class="bg-gray-100 p-6 rounded-lg shadow-md">
                 <p class="text-lg">
                     <span class="font-semibold text-gray-700">Nom :</span>
-                    <?php echo isset($_SESSION['utilisateur']['nom']) ? $_SESSION['utilisateur']['nom'] : 'Nom inconnu'; ?>
+                    <?php echo isset($_SESSION['utilisateur']['nom']) ? $_SESSION['utilisateur']['nom'] : 'sa marche ap'; ?>
                 </p>
                 <p class="text-lg mt-4">
                     <span class="font-semibold text-gray-700">Prénom :</span>
-                    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'Prénom inconnu'; ?>
+                    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?>
                 </p>
                 <p class="text-lg mt-4">
                     <span class="font-semibold text-gray-700">Email :</span>
-                    <?php echo isset($_SESSION['utilisateur']['email']) ? $_SESSION['utilisateur']['email'] : 'Email inconnu'; ?>
+                    <?php echo isset($_SESSION['utilisateur']['email']) ? $_SESSION['utilisateur']['email'] : 'sa marche ap'; ?>
                 </p>
-                <div class="mt-6">
-                    <button id="openModalBtn"
-                            class="inline-block bg-[#F5702B] text-white px-6 py-2 rounded hover:bg-[#d45920] transition">
-                        Modifier le profil
-                    </button>
-                </div>
+                <p class="text-lg mt-4">
+                    <span class="font-semibold text-gray-700">Adresse entreprise :</span>
+                    <?php echo isset($_SESSION['utilisateur']['companyAddress']) ? $_SESSION['utilisateur']['companyAddress'] : 'sa marche ap'; ?>
+                </p>
+                <p class="text-lg mt-4">
+                    <span class="font-semibold text-gray-700">Nom entreprise :</span>
+                    <?php echo isset($_SESSION['utilisateur']['companyName']) ? $_SESSION['utilisateur']['companyName'] : 'sa marche ap'; ?>
+                </p>
+                <div class="mt-6 flex gap-5 flex-col sm:flex-row sm:justify-center lg:justify-start lg:gap-8">
+  <button id="openModalBtn"
+          class="bg-[#F5702B] font-principale text-white px-6 py-2 rounded hover:bg-[#d45920] transition">
+      Modifier le profil
+  </button>
+
+  <a href="../../process/processDeconnexion.php"
+     class="inline-block text-center bg-red-600 font-principale text-white px-6 py-2 rounded hover:bg-[#d45920] transition">
+      Déconnexion
+  </a>
+</div>
+
             </div>
         </div>
     </div>
@@ -177,8 +191,41 @@ session_start();
     <div>
         <label for="email" class="block text-gray-600 font-principale">Email</label>
         <input type="email" name="email" id="email" value="<?php echo $_SESSION['utilisateur']['email'] ?? ''; ?>"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">          
+    </div>
+
+
+
+
+    
+
+
+
+
+<?php if($_SESSION["utilisateur"]['role'] === "Vendeur"){ 
+  
+  
+
+  ?>
+
+ 
+  <label for="email" class="block text-gray-600 font-principale">Nom entreprise: </label>
+  <div>
+        <input type="text" name="companyName" id="companyName" value="<?php echo $_SESSION['utilisateur']['companyName'] ?? ''; ?>"
                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
     </div>
+
+
+    <label for="email" class="block text-gray-600 font-principale">Adresse entreprise: </label>
+    <div>
+        <input type="text" name="companyAddress" id="companyAddress" value="<?php echo $_SESSION['utilisateur']['companyAddress'] ?? ''; ?>"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
+    </div>
+
+ 
+
+
+<?php }?>
     <button type="submit"
             class="w-full bg-[#F5702B] font-principale text-white py-3 rounded-lg hover:bg-[#d45920] transition">
         Enregistrer les modifications

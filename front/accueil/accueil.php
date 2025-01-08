@@ -60,6 +60,7 @@ session_start();
   <!-- Bouton Connectez-vous -->
   <div class="hidden md:flex md:ml-6">
     <a href="../profil/profil.php" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
+    <i class="fa-solid fa-user mr-2" style="color: #ffffff;"></i>
     <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?>
     </a>
   </div>
@@ -150,7 +151,6 @@ session_start();
 <section class="bg-[#FDEDD5] flex flex-col gap-8 items-center p-4 lg:items-center">
   <h2 class="font-principale font-semibold text-2xl lg:text-center">Recommandez pour vous</h2>
 
-  <!-- Container des articles -->
   <div class="flex flex-col gap-8 items-center lg:flex-row lg:justify-center lg:gap-12 lg:w-full">
     <!-- Article 1 -->
     <article class="flex gap-6 justify-center items-center bg-white rounded-lg p-4 shadow-md lg:flex-col lg:gap-4 lg:items-center lg:w-[300px]">

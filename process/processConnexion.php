@@ -20,16 +20,33 @@ try {
     $stmt->execute([':email' => $mail]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($mdp, $user['mdp'])) {
+    if ($user && password_verify($mdp, $user['mdp']) ) {
         // Connexion réussie
         $_SESSION['utilisateur'] = [
             'id' => $user['id'],
             'prenom' => $user['prenom'],
             'nom' => $user['nom'],
             'telephone' => $user['telephone'], 
-            'email' => $mail
+            'email' => $mail,
+            'role' => $user["role"]
+            
             
         ];
+
+        if( $user["role"] === "Vendeur"){
+
+            $sqlVendeur = "SELECT * FROM `user` JOIN user_pro ON user.id_user_pro = user_pro.id WHERE user.email = :email ;";
+            $stmt = $pdo->prepare($sqlVendeur);
+            $stmt->execute([':email' => $mail]);
+            $user_pro = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION['utilisateur'] += [
+                'companyName' => $user_pro['nom_entreprise'],
+                'companyAddress' => $user_pro['adresse_entreprise'],
+            ];
+
+        }
+
         // var_dump($_SESSION);
         // die();
         header("Location: ../front/accueil/accueil.php");
