@@ -98,7 +98,7 @@ try {
 
         // Récupérer l'utilisateur inséré
         $newUserId = $pdo->lastInsertId();
-        $_SESSION['pseudo'] = [
+        $_SESSION['utilisateur'] = [
             'id' => $newUserId,
             'prenom' => $username,
             'nom' => $lastname,

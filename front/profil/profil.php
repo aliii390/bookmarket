@@ -45,8 +45,9 @@ session_start();
 
   <!-- Bouton Connectez-vous -->
   <div class="hidden md:flex md:ml-6">
-    <a href="../profil/profil.php" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
-    <?php echo isset($_SESSION['pseudo']['prenom']) ? $_SESSION['pseudo']['prenom'] : 'sa marche ap'; ?>
+    <a href="#" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
+    <i class="fa-solid fa-user mr-2" style="color: #ffffff;"></i>
+    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?>
     </a>
   </div>
 
@@ -107,12 +108,12 @@ session_start();
       </a>
     </li>
     <li class="flex justify-center">
-      <a href="./front/login/login.php" 
+      <a href="#" 
          class="flex justify-center items-center h-10 w-40 px-3 py-2 text-sm 
                 text-white bg-[#2A3D37] hover:bg-[#109133] hover:text-white 
                 transition rounded-lg">
                 <i class="fa-solid fa-user mr-2" style="color: #ffffff;"></i>
-        <span class="font-principale sm:font-principale"> <?php echo isset($_SESSION['pseudo']['prenom']) ? $_SESSION['pseudo']['prenom'] : 'Invité'; ?></span>
+        <span class="font-principale sm:font-principale"> <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?></span>
       </a>
     </li>
   </ul>
@@ -129,28 +130,29 @@ session_start();
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
         <!-- Photo de profil -->
-        <div class="flex justify-center lg:justify-start">
-            <img src="../../assets/img/logo.png" alt="Avatar"
-                 class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-[#F5702B] shadow-md">
-        </div>
+        
         <!-- Informations du profil -->
         <div class="lg:col-span-2">
             <div class="bg-gray-100 p-6 rounded-lg shadow-md">
                 <p class="text-lg">
                     <span class="font-semibold font-principale text-gray-700">Nom :</span>
-                    <?php echo isset($_SESSION['pseudo']['nom']) ? $_SESSION['pseudo']['nom'] : 'sa marche ap'; ?>
+                    <?php echo isset($_SESSION['utilisateur']['nom']) ? $_SESSION['utilisateur']['nom'] : 'sa marche ap'; ?>
                 </p>
                 <p class="text-lg mt-4">
                     <span class="font-semibold font-principale text-gray-700">Prénom :</span>
-                    <?php echo isset($_SESSION['pseudo']['prenom']) ? $_SESSION['pseudo']['prenom'] : 'sa marche ap'; ?>
+                    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?>
                 </p>
                 <p class="text-lg mt-4">
                     <span class="font-semibold font-principale text-gray-700">Email :</span>
-                    <?php echo isset($_SESSION['pseudo']['email']) ? $_SESSION['pseudo']['email'] : 'sa marche ap'; ?>
+                    <?php echo isset($_SESSION['utilisateur']['email']) ? $_SESSION['utilisateur']['email'] : 'sa marche ap'; ?>
+                </p>
+                <p class="text-lg mt-4">
+                    <span class="font-semibold font-principale text-gray-700">Téléphone :</span>
+                    <?php echo isset($_SESSION['utilisateur']['telephone']) ? $_SESSION['utilisateur']['telephone'] : 'sa marche ap'; ?>
                 </p>
                 
                 <div class="mt-6">
-                    <a href="./edit-profile.php"
+                    <a href="#"
                        class="inline-block font-principale bg-[#F5702B] text-white px-6 py-2 rounded hover:bg-[#d45920] transition">
                         Modifier le profil
                     </a>

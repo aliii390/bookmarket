@@ -60,7 +60,7 @@ session_start();
   <!-- Bouton Connectez-vous -->
   <div class="hidden md:flex md:ml-6">
     <a href="../profil/profil.php" class="w-[130px] h-8 bg-[#F5702B] text-white font-principale flex items-center justify-center  hover:bg-[#d45920] transition">
-    <?php echo isset($_SESSION['pseudo']['prenom']) ? $_SESSION['pseudo']['prenom'] : 'sa marche ap'; ?>
+    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?>
     </a>
   </div>
 
@@ -126,7 +126,7 @@ session_start();
                 text-white bg-[#2A3D37] hover:bg-[#109133] hover:text-white 
                 transition rounded-lg">
                 <i class="fa-solid fa-user mr-2" style="color: #ffffff;"></i>
-        <span class="font-principale sm:font-principale"> <?php echo isset($_SESSION['pseudo']['prenom']) ? $_SESSION['pseudo']['prenom'] : 'Invité'; ?></span>
+        <span class="font-principale sm:font-principale"> <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'Invité'; ?></span>
       </a>
     </li>
   </ul>
