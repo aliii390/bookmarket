@@ -163,27 +163,28 @@ session_start();
             <i class="fa-solid fa-times text-xl"></i>
         </button>
         <h2 class="text-xl font-principale text-gray-700 mb-4">Modifier le profil</h2>
-        <form action="" method="post" class="space-y-4">
-            <div>
-                <label for="nom" class="block text-gray-600 font-principale">Nom</label>
-                <input type="text" name="nom" id="nom"  value="<?php echo $_SESSION['utilisateur']['nom'] ?? ''; ?>"
-                       class="w-full p-3 border border-gray-300 rounded-lg placeholder:font-principale  focus:ring-2 focus:ring-orange-400">
-            </div>
-            <div>
-                <label for="prenom" class="block text-gray-600 font-principale">Prénom</label>
-                <input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['utilisateur']['prenom'] ?? ''; ?>"
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
-            </div>
-            <div>
-                <label for="email" class="block text-gray-600 font-principale">Email</label>
-                <input type="email" name="email" id="email" value="<?php echo $_SESSION['utilisateur']['email'] ?? ''; ?>"
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
-            </div>
-            <button type="submit"
-                    class="w-full bg-[#F5702B] font-principale text-white py-3 rounded-lg hover:bg-[#d45920] transition">
-                Enregistrer les modifications
-            </button>
-        </form>
+        <form action="../../process/processUpdate.php" method="post" class="space-y-4">
+    <div>
+        <label for="nom" class="block text-gray-600 font-principale">Nom</label>
+        <input type="text" name="nom" id="nom" value="<?php echo $_SESSION['utilisateur']['nom'] ?? ''; ?>"
+               class="w-full p-3 border border-gray-300 rounded-lg placeholder:font-principale focus:ring-2 focus:ring-orange-400">
+    </div>
+    <div>
+        <label for="prenom" class="block text-gray-600 font-principale">Prénom</label>
+        <input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['utilisateur']['prenom'] ?? ''; ?>"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
+    </div>
+    <div>
+        <label for="email" class="block text-gray-600 font-principale">Email</label>
+        <input type="email" name="email" id="email" value="<?php echo $_SESSION['utilisateur']['email'] ?? ''; ?>"
+               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
+    </div>
+    <button type="submit"
+            class="w-full bg-[#F5702B] font-principale text-white py-3 rounded-lg hover:bg-[#d45920] transition">
+        Enregistrer les modifications
+    </button>
+</form>
+
     </div>
 </div>
 
