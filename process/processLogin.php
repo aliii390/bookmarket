@@ -15,7 +15,7 @@ if (
     exit;
 }
 
-// Récupération des données
+
 $username = htmlspecialchars(trim($_POST['prenom']));
 $lastname = htmlspecialchars(trim($_POST['nom']));
 $email = htmlspecialchars(trim($_POST['email']));
@@ -24,7 +24,7 @@ $role = isset($_POST['role']) ? htmlspecialchars($_POST['role']) : "Client";
 $password = trim($_POST['mdp']);
 
 try {
-    // Activer le mode exception pour PDO
+    
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Vérifier si l'utilisateur existe déjà
@@ -55,7 +55,7 @@ try {
             exit;
         }
     } else {
-        // Ajouter un nouvel utilisateur
+        
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $idUserPro = null;
 
@@ -74,7 +74,7 @@ try {
                     ':adresse_entreprise' => $companyAddress
                 ]);
 
-                $idUserPro = $pdo->lastInsertId(); // ID de l'entreprise insérée
+                $idUserPro = $pdo->lastInsertId(); 
             } else {
                 $_SESSION["error"] = "Les informations de l'entreprise sont obligatoires pour le rôle Vendeur.";
                 header("Location: ../index.php");
@@ -82,7 +82,7 @@ try {
             }
         }
 
-        // Insérer dans la table `user`
+  
         $sqlUser = "INSERT INTO user (prenom, nom, email, telephone, mdp, role, id_user_pro) 
                     VALUES (:prenom, :nom, :email, :telephone, :mdp, :role, :id_user_pro)";
         $stmtUser = $pdo->prepare($sqlUser);
@@ -96,7 +96,7 @@ try {
             ':id_user_pro' => $idUserPro
         ]);
 
-        // Récupérer l'utilisateur inséré
+       
         $newUserId = $pdo->lastInsertId();
         $_SESSION['utilisateur'] = [
             'id' => $newUserId,

@@ -15,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="../../assets/js/burger.js"></script>
+    <script defer src="../../assets/js/popupProfil.js"></script>
 </head>
 <body class="bg-[#FDEDD5]  text-gray-800 font-sans">
 
@@ -125,42 +126,68 @@ session_start();
 <!-- Section Profil -->
 <main class="max-w-5xl mx-auto mt-10 p-6 sm:p-8 bg-white shadow-lg rounded-lg">
     <div class="text-center mb-6 lg:mb-7">
-        <h1 class="text-xl font-bold text-black font-principale">Bienvenue sur votre profil</h1>
-        <p class="text-gray-600 font-principale">Gérez vos informations personnelles et vos préférences.</p>
+        <h1 class="text-xl font-bold text-black">Bienvenue sur votre profil</h1>
+        <p class="text-gray-600">Gérez vos informations personnelles et vos préférences.</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-        <!-- Photo de profil -->
         
-        <!-- Informations du profil -->
         <div class="lg:col-span-2">
             <div class="bg-gray-100 p-6 rounded-lg shadow-md">
                 <p class="text-lg">
-                    <span class="font-semibold font-principale text-gray-700">Nom :</span>
-                    <?php echo isset($_SESSION['utilisateur']['nom']) ? $_SESSION['utilisateur']['nom'] : 'sa marche ap'; ?>
+                    <span class="font-semibold text-gray-700">Nom :</span>
+                    <?php echo isset($_SESSION['utilisateur']['nom']) ? $_SESSION['utilisateur']['nom'] : 'Nom inconnu'; ?>
                 </p>
                 <p class="text-lg mt-4">
-                    <span class="font-semibold font-principale text-gray-700">Prénom :</span>
-                    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'sa marche ap'; ?>
+                    <span class="font-semibold text-gray-700">Prénom :</span>
+                    <?php echo isset($_SESSION['utilisateur']['prenom']) ? $_SESSION['utilisateur']['prenom'] : 'Prénom inconnu'; ?>
                 </p>
                 <p class="text-lg mt-4">
-                    <span class="font-semibold font-principale text-gray-700">Email :</span>
-                    <?php echo isset($_SESSION['utilisateur']['email']) ? $_SESSION['utilisateur']['email'] : 'sa marche ap'; ?>
+                    <span class="font-semibold text-gray-700">Email :</span>
+                    <?php echo isset($_SESSION['utilisateur']['email']) ? $_SESSION['utilisateur']['email'] : 'Email inconnu'; ?>
                 </p>
-                <p class="text-lg mt-4">
-                    <span class="font-semibold font-principale text-gray-700">Téléphone :</span>
-                    <?php echo isset($_SESSION['utilisateur']['telephone']) ? $_SESSION['utilisateur']['telephone'] : 'sa marche ap'; ?>
-                </p>
-                
                 <div class="mt-6">
-                    <a href="#"
-                       class="inline-block font-principale bg-[#F5702B] text-white px-6 py-2 rounded hover:bg-[#d45920] transition">
+                    <button id="openModalBtn"
+                            class="inline-block bg-[#F5702B] text-white px-6 py-2 rounded hover:bg-[#d45920] transition">
                         Modifier le profil
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+        <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800">
+            <i class="fa-solid fa-times text-xl"></i>
+        </button>
+        <h2 class="text-xl font-principale text-gray-700 mb-4">Modifier le profil</h2>
+        <form action="" method="post" class="space-y-4">
+            <div>
+                <label for="nom" class="block text-gray-600 font-principale">Nom</label>
+                <input type="text" name="nom" id="nom"  value="<?php echo $_SESSION['utilisateur']['nom'] ?? ''; ?>"
+                       class="w-full p-3 border border-gray-300 rounded-lg placeholder:font-principale  focus:ring-2 focus:ring-orange-400">
+            </div>
+            <div>
+                <label for="prenom" class="block text-gray-600 font-principale">Prénom</label>
+                <input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['utilisateur']['prenom'] ?? ''; ?>"
+                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
+            </div>
+            <div>
+                <label for="email" class="block text-gray-600 font-principale">Email</label>
+                <input type="email" name="email" id="email" value="<?php echo $_SESSION['utilisateur']['email'] ?? ''; ?>"
+                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 placeholder:font-principale">
+            </div>
+            <button type="submit"
+                    class="w-full bg-[#F5702B] font-principale text-white py-3 rounded-lg hover:bg-[#d45920] transition">
+                Enregistrer les modifications
+            </button>
+        </form>
+    </div>
+</div>
+
+
 
 
 
